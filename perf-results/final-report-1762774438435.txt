@@ -1,0 +1,821 @@
+Performance test report for https://petstore.octoperf.com/actions/Catalog.action
+
+=== Step: home ===
+Trace file: perf-results/1762774341706-home.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20166413013, max: 20170283923}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: BEC95032CDBB9F448CA9F19696C7CAA3
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20166447739, max: 20170283923}
+Metrics (lab / observed):
+  - LCP: 1348 ms, event: (eventKey: r-6498, ts: 20167795509), nodeId: 75
+  - LCP breakdown:
+    - TTFB: 759 ms, bounds: {min: 20166447739, max: 20167207177}
+    - Load delay: 5 ms, bounds: {min: 20167207177, max: 20167212160}
+    - Load duration: 569 ms, bounds: {min: 20167212160, max: 20167780995}
+    - Render delay: 15 ms, bounds: {min: 20167780995, max: 20167795509}
+  - CLS: 0.02, event: (eventKey: s--1, ts: 20167608722)
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+  - insight name: LCPBreakdown
+    description: Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.
+    relevant trace bounds: {min: 20166447739, max: 20167795509}
+    example question: Help me optimize my LCP score
+    example question: Which LCP phase was most problematic?
+    example question: What can I do to reduce the LCP time for this page load?
+  - insight name: LCPDiscovery
+    description: [Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading
+    relevant trace bounds: {min: 20167207177, max: 20167781158}
+    example question: Suggest fixes to reduce my LCP
+    example question: What can I do to reduce my LCP discovery time?
+    example question: Why is LCP discovery time important?
+  - insight name: CLSCulprits
+    description: Layout shifts occur when elements move absent any user interaction. [Investigate the causes of layout shifts](https://developer.chrome.com/docs/performance/insights/cls-culprit), such as elements being added, removed, or their fonts changing as the page loads.
+    relevant trace bounds: {min: 20167608722, max: 20168608722}
+    example question: Help me optimize my CLS score
+    example question: How can I prevent layout shifts on this page?
+  - insight name: RenderBlocking
+    description: Requests are blocking the page's initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.
+    relevant trace bounds: {min: 20167211194, max: 20167432896}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    example question: Show me the most impactful render blocking requests that I should focus on
+    example question: How can I reduce the number of render blocking requests?
+  - insight name: NetworkDependencyTree
+    description: [Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.
+    relevant trace bounds: {min: 20166448201, max: 20167432896}
+    example question: How do I optimize my network dependency tree?
+  - insight name: DocumentLatency
+    description: Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.
+    relevant trace bounds: {min: 20166448201, max: 20167220150}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    estimated wasted bytes: 3.6 kB
+    example question: How do I decrease the initial loading time of my page?
+    example question: Did anything slow down the request for this document?
+  - insight name: Cache
+    description: A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).
+    relevant trace bounds: {min: 20167211194, max: 20167781158}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    estimated wasted bytes: 67 kB
+    example question: What caching strategies can I apply to improve my page performance?
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: sign_in ===
+Trace file: perf-results/1762774346703-sign_in.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Account.action?signonForm=
+Trace bounds: {min: 20171575536, max: 20175327538}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: 0DCEAB41FA793FAC2E0941E7DB7565ED
+
+URL: https://petstore.octoperf.com/actions/Account.action?signonForm=
+Bounds: {min: 20171629502, max: 20175327538}
+Metrics (lab / observed):
+  - LCP: 208 ms, event: (eventKey: r-2551, ts: 20171837175), nodeId: 52
+  - LCP breakdown:
+    - TTFB: 184 ms, bounds: {min: 20171629502, max: 20171813261.999996}
+    - Load delay: 2 ms, bounds: {min: 20171813261.999996, max: 20171815294}
+    - Load duration: 0.6 ms, bounds: {min: 20171815294, max: 20171815874}
+    - Render delay: 21 ms, bounds: {min: 20171815874, max: 20171837175}
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+  - insight name: LCPBreakdown
+    description: Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.
+    relevant trace bounds: {min: 20171629502, max: 20171837175}
+    example question: Help me optimize my LCP score
+    example question: Which LCP phase was most problematic?
+    example question: What can I do to reduce the LCP time for this page load?
+  - insight name: LCPDiscovery
+    description: [Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading
+    relevant trace bounds: {min: 20171813261.999996, max: 20171817696}
+    example question: Suggest fixes to reduce my LCP
+    example question: What can I do to reduce my LCP discovery time?
+    example question: Why is LCP discovery time important?
+  - insight name: RenderBlocking
+    description: Requests are blocking the page's initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.
+    relevant trace bounds: {min: 20171815189, max: 20171816565}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    example question: Show me the most impactful render blocking requests that I should focus on
+    example question: How can I reduce the number of render blocking requests?
+  - insight name: NetworkDependencyTree
+    description: [Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.
+    relevant trace bounds: {min: 20171629815, max: 20171824398}
+    example question: How do I optimize my network dependency tree?
+  - insight name: DocumentLatency
+    description: Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.
+    relevant trace bounds: {min: 20171629815, max: 20171824398}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    estimated wasted bytes: 2.6 kB
+    example question: How do I decrease the initial loading time of my page?
+    example question: Did anything slow down the request for this document?
+  - insight name: Cache
+    description: A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).
+    relevant trace bounds: {min: 20171815189, max: 20171818951}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    example question: What caching strategies can I apply to improve my page performance?
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: login ===
+Trace file: perf-results/1762774361551-login.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20176566942, max: 20190083227}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20176566942, max: 20190083227}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: fish ===
+Trace file: perf-results/1762774374613-fish_category.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action?categoryId=FISH
+Trace bounds: {min: 20191364560, max: 20203125147}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: F1DA8E532CFE107BF8FEFAFC8BF87ACB
+
+URL: https://petstore.octoperf.com/actions/Catalog.action?categoryId=FISH
+Bounds: {min: 20191420196, max: 20203125147}
+Metrics (lab / observed):
+  - LCP: 217 ms, event: (eventKey: r-2967, ts: 20191637170), nodeId: 117
+  - LCP breakdown:
+    - TTFB: 188 ms, bounds: {min: 20191420196, max: 20191608290}
+    - Load delay: 3 ms, bounds: {min: 20191608290, max: 20191610820}
+    - Load duration: 4 ms, bounds: {min: 20191610820, max: 20191614490}
+    - Render delay: 23 ms, bounds: {min: 20191614490, max: 20191637170}
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+  - insight name: LCPBreakdown
+    description: Each [subpart has specific improvement strategies](https://developer.chrome.com/docs/performance/insights/lcp-breakdown). Ideally, most of the LCP time should be spent on loading the resources, not within delays.
+    relevant trace bounds: {min: 20191420196, max: 20191637170}
+    example question: Help me optimize my LCP score
+    example question: Which LCP phase was most problematic?
+    example question: What can I do to reduce the LCP time for this page load?
+  - insight name: LCPDiscovery
+    description: [Optimize LCP](https://developer.chrome.com/docs/performance/insights/lcp-discovery) by making the LCP image discoverable from the HTML immediately, and avoiding lazy-loading
+    relevant trace bounds: {min: 20191608290, max: 20191620159}
+    example question: Suggest fixes to reduce my LCP
+    example question: What can I do to reduce my LCP discovery time?
+    example question: Why is LCP discovery time important?
+  - insight name: RenderBlocking
+    description: Requests are blocking the page's initial render, which may delay LCP. [Deferring or inlining](https://developer.chrome.com/docs/performance/insights/render-blocking) can move these network requests out of the critical path.
+    relevant trace bounds: {min: 20191610415, max: 20191611944}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    example question: Show me the most impactful render blocking requests that I should focus on
+    example question: How can I reduce the number of render blocking requests?
+  - insight name: NetworkDependencyTree
+    description: [Avoid chaining critical requests](https://developer.chrome.com/docs/performance/insights/network-dependency-tree) by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.
+    relevant trace bounds: {min: 20191420521, max: 20191614327}
+    example question: How do I optimize my network dependency tree?
+  - insight name: DocumentLatency
+    description: Your first network request is the most important. [Reduce its latency](https://developer.chrome.com/docs/performance/insights/document-latency) by avoiding redirects, ensuring a fast server response, and enabling text compression.
+    relevant trace bounds: {min: 20191420521, max: 20191614327}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    estimated wasted bytes: 3.2 kB
+    example question: How do I decrease the initial loading time of my page?
+    example question: Did anything slow down the request for this document?
+  - insight name: Cache
+    description: A long cache lifetime can speed up repeat visits to your page. [Learn more about caching](https://developer.chrome.com/docs/performance/insights/cache).
+    relevant trace bounds: {min: 20191610415, max: 20191620159}
+    estimated metric savings: FCP 0 ms, LCP 0 ms
+    example question: What caching strategies can I apply to improve my page performance?
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: product ===
+Trace file: perf-results/1762774387418-product_click.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20204471310, max: 20215986802}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20204471310, max: 20215986802}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: add_to_cart ===
+Trace file: perf-results/1762774400174-add_to_cart.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20217230106, max: 20228740035}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20217230106, max: 20228740035}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: view_cart ===
+Trace file: perf-results/1762774412928-view_cart.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20229985599, max: 20241496368}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20229985599, max: 20241496368}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: checkout ===
+Trace file: perf-results/1762774425684-proceed_to_checkout.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20242741201, max: 20254251325}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20242741201, max: 20254251325}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+
+=== Step: logout ===
+Trace file: perf-results/1762774438434-logout.txt
+## Summary of Performance trace findings:
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Trace bounds: {min: 20255495918, max: 20267004475}
+CPU throttling: none
+Network throttling: none
+
+# Available insight sets
+
+The following is a list of insight sets. An insight set covers a specific part of the trace, split by navigations. The insights within each insight set are specific to that part of the trace. Be sure to consider the insight set id and bounds when calling functions. If no specific insight set or navigation is mentioned, assume the user is referring to the first one.
+
+## insight set id: NO_NAVIGATION
+
+URL: https://petstore.octoperf.com/actions/Catalog.action
+Bounds: {min: 20255495918, max: 20267004475}
+Metrics (lab / observed):
+  - CLS: 0.00
+Metrics (field / real users): n/a – no data for this page in CrUX
+Available insights:
+
+## Details on call tree & network request formats:
+Information on performance traces may contain main thread activity represented as call frames and network requests.
+
+Each call frame is presented in the following format:
+
+'id;eventKey;name;duration;selfTime;urlIndex;childRange;[S]'
+
+Key definitions:
+
+* id: A unique numerical identifier for the call frame. Never mention this id in the output to the user.
+* eventKey: String that uniquely identifies this event in the flame chart.
+* name: A concise string describing the call frame (e.g., 'Evaluate Script', 'render', 'fetchData').
+* duration: The total execution time of the call frame, including its children.
+* selfTime: The time spent directly within the call frame, excluding its children's execution.
+* urlIndex: Index referencing the "All URLs" list. Empty if no specific script URL is associated.
+* childRange: Specifies the direct children of this node using their IDs. If empty ('' or 'S' at the end), the node has no children. If a single number (e.g., '4'), the node has one child with that ID. If in the format 'firstId-lastId' (e.g., '4-5'), it indicates a consecutive range of child IDs from 'firstId' to 'lastId', inclusive.
+* S: _Optional_. The letter 'S' terminates the line if that call frame was selected by the user.
+
+Example Call Tree:
+
+1;r-123;main;500;100;;
+2;r-124;update;200;50;;3
+3;p-49575-15428179-2834-374;animate;150;20;0;4-5;S
+4;p-49575-15428179-3505-1162;calculatePosition;80;80;;
+5;p-49575-15428179-5391-2767;applyStyles;50;50;;
+
+
+Network requests are formatted like this:
+`urlIndex;eventKey;queuedTime;requestSentTime;downloadCompleteTime;processingCompleteTime;totalDuration;downloadDuration;mainThreadProcessingDuration;statusCode;mimeType;priority;initialPriority;finalPriority;renderBlocking;protocol;fromServiceWorker;initiators;redirects:[[redirectUrlIndex|startTime|duration]];responseHeaders:[header1Value|header2Value|...]`
+
+- `urlIndex`: Numerical index for the request's URL, referencing the "All URLs" list.
+- `eventKey`: String that uniquely identifies this request's trace event.
+Timings (all in milliseconds, relative to navigation start):
+- `queuedTime`: When the request was queued.
+- `requestSentTime`: When the request was sent.
+- `downloadCompleteTime`: When the download completed.
+- `processingCompleteTime`: When main thread processing finished.
+Durations (all in milliseconds):
+- `totalDuration`: Total time from the request being queued until its main thread processing completed.
+- `downloadDuration`: Time spent actively downloading the resource.
+- `mainThreadProcessingDuration`: Time spent on the main thread after the download completed.
+- `statusCode`: The HTTP status code of the response (e.g., 200, 404).
+- `mimeType`: The MIME type of the resource (e.g., "text/html", "application/javascript").
+- `priority`: The final network request priority (e.g., "VeryHigh", "Low").
+- `initialPriority`: The initial network request priority.
+- `finalPriority`: The final network request priority (redundant if `priority` is always final, but kept for clarity if `initialPriority` and `priority` differ).
+- `renderBlocking`: 't' if the request was render-blocking, 'f' otherwise.
+- `protocol`: The network protocol used (e.g., "h2", "http/1.1").
+- `fromServiceWorker`: 't' if the request was served from a service worker, 'f' otherwise.
+- `initiators`: A list (separated by ,) of URL indices for the initiator chain of this request. Listed in order starting from the root request to the request that directly loaded this one. This represents the network dependencies necessary to load this request. If there is no initiator, this is empty.
+- `redirects`: A comma-separated list of redirects, enclosed in square brackets. Each redirect is formatted as
+`[redirectUrlIndex|startTime|duration]`, where: `redirectUrlIndex`: Numerical index for the redirect's URL. `startTime`: The start time of the redirect in milliseconds, relative to navigation start. `duration`: The duration of the redirect in milliseconds.
+- `responseHeaders`: A list (separated by '|') of values for specific, pre-defined response headers, enclosed in square brackets.
+The order of headers corresponds to an internal fixed list. If a header is not present, its value will be empty.
+
+

@@ -1,0 +1,61 @@
+═══════════════════════════════════════════════════════════════════════════════
+  CHROME DEVTOOLS MCP - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ SETUP COMPLETE!
+
+I've started Chrome with remote debugging and the MCP server for you.
+
+═══════════════════════════════════════════════════════════════════════════════
+  NEXT STEP: Configure Cursor
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Open Cursor Settings:
+   - Press Cmd + , (or Cursor → Settings)
+
+2. Go to MCP Settings:
+   - Search for "MCP" in settings
+   - Or: Cursor Settings → MCP → New MCP Server
+
+3. Add Chrome DevTools MCP:
+   - Server name: chrome-devtools
+   - Command: node
+   - Args (add each on a new line):
+     /Users/anirbanganguly/Documents/Coding/Google Dev Tool MCP/chrome-devtools-mcp-main/build/src/index.js
+     --browserUrl=http://127.0.0.1:9222
+
+4. Save and restart Cursor
+
+═══════════════════════════════════════════════════════════════════════════════
+  TEST IT
+═══════════════════════════════════════════════════════════════════════════════
+
+In Cursor's chat, type:
+  "Check the performance of https://developers.chrome.com"
+
+You should see Chrome open and get a performance report!
+
+═══════════════════════════════════════════════════════════════════════════════
+  WHAT YOU CAN DO
+═══════════════════════════════════════════════════════════════════════════════
+
+Ask Cursor to:
+  • "Check the performance of [any website]"
+  • "Test [website] on mobile with slow 3G"
+  • "Analyze network requests for [website]"
+  • "Take a screenshot of [website]"
+  • "Check console errors on [website]"
+
+═══════════════════════════════════════════════════════════════════════════════
+  IMPORTANT NOTES
+═══════════════════════════════════════════════════════════════════════════════
+
+• Chrome is running with remote debugging on port 9222
+• The MCP server script is running in the background
+• Keep the terminal window open (or Chrome will disconnect)
+• To stop: Close Chrome and press Ctrl+C in the terminal
+
+═══════════════════════════════════════════════════════════════════════════════
+
+For detailed instructions, see: CURSOR_SETUP.md
+
