@@ -1,0 +1,882 @@
+{
+  "url": "https://petstore.octoperf.com/actions/Catalog.action",
+  "timestamp": "2025-11-15T17:35:45.771Z",
+  "summary": {
+    "totalRequests": 17,
+    "failedRequests": 0,
+    "cachedRequests": 0,
+    "totalTransferSize": "71.77 KB",
+    "totalTransferSizeBytes": 73493,
+    "domContentLoadedTime": "886.00 ms",
+    "loadTime": "1491.00 ms",
+    "totalTime": "1491.00 ms"
+  },
+  "detailedTimings": {
+    "redirectTime": "0.00 ms",
+    "dnsLookupTime": "38.00 ms",
+    "tcpConnectionTime": "382.00 ms",
+    "requestTime": "380.00 ms",
+    "responseTime": "4.00 ms",
+    "domProcessingTime": "611.00 ms"
+  },
+  "resourceBreakdown": {
+    "Document": {
+      "count": 1,
+      "size": 5568
+    },
+    "Stylesheet": {
+      "count": 1,
+      "size": 6173
+    },
+    "Image": {
+      "count": 14,
+      "size": 60846
+    },
+    "Other": {
+      "count": 1,
+      "size": 906
+    }
+  },
+  "domainBreakdown": {
+    "petstore.octoperf.com": {
+      "count": 17,
+      "size": 73493
+    }
+  },
+  "navigationTiming": {
+    "navigationStart": 1763228140885,
+    "unloadEventStart": 0,
+    "unloadEventEnd": 0,
+    "redirectStart": 0,
+    "redirectEnd": 0,
+    "fetchStart": 1763228140886,
+    "domainLookupStart": 1763228140887,
+    "domainLookupEnd": 1763228140925,
+    "connectStart": 1763228140995,
+    "connectEnd": 1763228141377,
+    "secureConnectionStart": 1763228140995,
+    "requestStart": 1763228141377,
+    "responseStart": 1763228141757,
+    "responseEnd": 1763228141761,
+    "domLoading": 1763228141765,
+    "domInteractive": 1763228141771,
+    "domContentLoadedEventStart": 1763228141771,
+    "domContentLoadedEventEnd": 1763228141771,
+    "domComplete": 1763228142376,
+    "loadEventStart": 1763228142376,
+    "loadEventEnd": 1763228142376,
+    "transferSize": 5652,
+    "encodedBodySize": 5352,
+    "decodedBodySize": 5352,
+    "duration": 1490.9000000059605
+  },
+  "performanceMetrics": [
+    {
+      "name": "Timestamp",
+      "value": 54291.906341
+    },
+    {
+      "name": "AudioHandlers",
+      "value": 0
+    },
+    {
+      "name": "AudioWorkletProcessors",
+      "value": 0
+    },
+    {
+      "name": "Documents",
+      "value": 5
+    },
+    {
+      "name": "Frames",
+      "value": 2
+    },
+    {
+      "name": "JSEventListeners",
+      "value": 0
+    },
+    {
+      "name": "LayoutObjects",
+      "value": 169
+    },
+    {
+      "name": "MediaKeySessions",
+      "value": 0
+    },
+    {
+      "name": "MediaKeys",
+      "value": 0
+    },
+    {
+      "name": "Nodes",
+      "value": 295
+    },
+    {
+      "name": "Resources",
+      "value": 16
+    },
+    {
+      "name": "ContextLifecycleStateObservers",
+      "value": 9
+    },
+    {
+      "name": "V8PerContextDatas",
+      "value": 4
+    },
+    {
+      "name": "WorkerGlobalScopes",
+      "value": 0
+    },
+    {
+      "name": "UACSSResources",
+      "value": 0
+    },
+    {
+      "name": "RTCPeerConnections",
+      "value": 0
+    },
+    {
+      "name": "ResourceFetchers",
+      "value": 5
+    },
+    {
+      "name": "AdSubframes",
+      "value": 0
+    },
+    {
+      "name": "DetachedScriptStates",
+      "value": 2
+    },
+    {
+      "name": "ArrayBufferContents",
+      "value": 0
+    },
+    {
+      "name": "LayoutCount",
+      "value": 4
+    },
+    {
+      "name": "RecalcStyleCount",
+      "value": 3
+    },
+    {
+      "name": "LayoutDuration",
+      "value": 0.003048
+    },
+    {
+      "name": "RecalcStyleDuration",
+      "value": 0.008395
+    },
+    {
+      "name": "DevToolsCommandDuration",
+      "value": 0.000023
+    },
+    {
+      "name": "ScriptDuration",
+      "value": 0
+    },
+    {
+      "name": "V8CompileDuration",
+      "value": 0
+    },
+    {
+      "name": "TaskDuration",
+      "value": 0.062608
+    },
+    {
+      "name": "TaskOtherDuration",
+      "value": 0.051142
+    },
+    {
+      "name": "ThreadTime",
+      "value": 0.040624
+    },
+    {
+      "name": "ProcessTime",
+      "value": 0.106277
+    },
+    {
+      "name": "JSHeapUsedSize",
+      "value": 1077952
+    },
+    {
+      "name": "JSHeapTotalSize",
+      "value": 1572864
+    },
+    {
+      "name": "FirstMeaningfulPaint",
+      "value": 54288.172426
+    },
+    {
+      "name": "DomContentLoaded",
+      "value": 54287.90924
+    },
+    {
+      "name": "NavigationStart",
+      "value": 54287.023353
+    }
+  ],
+  "resources": [
+    {
+      "name": "https://petstore.octoperf.com/css/jpetstore.css",
+      "initiatorType": "link",
+      "duration": 238.10000000149012,
+      "transferSize": 6273,
+      "encodedBodySize": 5973,
+      "decodedBodySize": 5973,
+      "startTime": 881.3000000044703,
+      "fetchStart": 881.3000000044703,
+      "domainLookupStart": 881.3000000044703,
+      "domainLookupEnd": 881.3000000044703,
+      "connectStart": 881.3000000044703,
+      "connectEnd": 881.3000000044703,
+      "requestStart": 882.3000000044703,
+      "responseStart": 1116.4000000059605,
+      "responseEnd": 1119.4000000059605
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/logo-topbar.svg",
+      "initiatorType": "img",
+      "duration": 421.90000000596046,
+      "transferSize": 16588,
+      "encodedBodySize": 16288,
+      "decodedBodySize": 16288,
+      "startTime": 881.5,
+      "fetchStart": 881.5,
+      "domainLookupStart": 881.5,
+      "domainLookupEnd": 881.5,
+      "connectStart": 881.5,
+      "connectEnd": 881.5,
+      "requestStart": 882.4000000059605,
+      "responseStart": 1118.5,
+      "responseEnd": 1303.4000000059605
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/cart.gif",
+      "initiatorType": "img",
+      "duration": 421.8999999985099,
+      "transferSize": 1960,
+      "encodedBodySize": 1660,
+      "decodedBodySize": 1660,
+      "startTime": 881.6000000014901,
+      "fetchStart": 881.6000000014901,
+      "domainLookupStart": 881.6000000014901,
+      "domainLookupEnd": 881.6000000014901,
+      "connectStart": 881.6000000014901,
+      "connectEnd": 881.6000000014901,
+      "requestStart": 882.7000000029802,
+      "responseStart": 1302.2000000029802,
+      "responseEnd": 1303.5
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/separator.gif",
+      "initiatorType": "img",
+      "duration": 422.1000000014901,
+      "transferSize": 346,
+      "encodedBodySize": 46,
+      "decodedBodySize": 46,
+      "startTime": 881.6000000014901,
+      "fetchStart": 881.6000000014901,
+      "domainLookupStart": 881.6000000014901,
+      "domainLookupEnd": 881.6000000014901,
+      "connectStart": 881.6000000014901,
+      "connectEnd": 881.6000000014901,
+      "requestStart": 885.4000000059605,
+      "responseStart": 1302.6000000014901,
+      "responseEnd": 1303.7000000029802
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/sm_fish.gif",
+      "initiatorType": "img",
+      "duration": 422,
+      "transferSize": 571,
+      "encodedBodySize": 271,
+      "decodedBodySize": 271,
+      "startTime": 881.7000000029802,
+      "fetchStart": 881.7000000029802,
+      "domainLookupStart": 881.7000000029802,
+      "domainLookupEnd": 881.7000000029802,
+      "connectStart": 881.7000000029802,
+      "connectEnd": 881.7000000029802,
+      "requestStart": 885.8000000044703,
+      "responseStart": 1302.9000000059605,
+      "responseEnd": 1303.7000000029802
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/sm_reptiles.gif",
+      "initiatorType": "img",
+      "duration": 422,
+      "transferSize": 698,
+      "encodedBodySize": 398,
+      "decodedBodySize": 398,
+      "startTime": 881.8000000044703,
+      "fetchStart": 881.8000000044703,
+      "domainLookupStart": 881.8000000044703,
+      "domainLookupEnd": 881.8000000044703,
+      "connectStart": 881.8000000044703,
+      "connectEnd": 881.8000000044703,
+      "requestStart": 886.7000000029802,
+      "responseStart": 1303.1000000014901,
+      "responseEnd": 1303.8000000044703
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/sm_dogs.gif",
+      "initiatorType": "img",
+      "duration": 424,
+      "transferSize": 606,
+      "encodedBodySize": 306,
+      "decodedBodySize": 306,
+      "startTime": 881.8000000044703,
+      "fetchStart": 881.8000000044703,
+      "domainLookupStart": 881.8000000044703,
+      "domainLookupEnd": 881.8000000044703,
+      "connectStart": 881.8000000044703,
+      "connectEnd": 881.8000000044703,
+      "requestStart": 886.2000000029802,
+      "responseStart": 1304.5,
+      "responseEnd": 1305.8000000044703
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/sm_cats.gif",
+      "initiatorType": "img",
+      "duration": 422.1000000014901,
+      "transferSize": 589,
+      "encodedBodySize": 289,
+      "decodedBodySize": 289,
+      "startTime": 882,
+      "fetchStart": 882,
+      "domainLookupStart": 882,
+      "domainLookupEnd": 882,
+      "connectStart": 882,
+      "connectEnd": 882,
+      "requestStart": 887.1000000014901,
+      "responseStart": 1303.2000000029802,
+      "responseEnd": 1304.1000000014901
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/sm_birds.gif",
+      "initiatorType": "img",
+      "duration": 424,
+      "transferSize": 551,
+      "encodedBodySize": 251,
+      "decodedBodySize": 251,
+      "startTime": 882,
+      "fetchStart": 882,
+      "domainLookupStart": 882,
+      "domainLookupEnd": 882,
+      "connectStart": 882,
+      "connectEnd": 882,
+      "requestStart": 887.3000000044703,
+      "responseStart": 1304.7000000029802,
+      "responseEnd": 1306
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/dogs_icon.gif",
+      "initiatorType": "img",
+      "duration": 423.30000000447035,
+      "transferSize": 768,
+      "encodedBodySize": 468,
+      "decodedBodySize": 468,
+      "startTime": 882.1000000014901,
+      "fetchStart": 882.1000000014901,
+      "domainLookupStart": 882.1000000014901,
+      "domainLookupEnd": 882.1000000014901,
+      "connectStart": 882.1000000014901,
+      "connectEnd": 882.1000000014901,
+      "requestStart": 887.6000000014901,
+      "responseStart": 1304.2000000029802,
+      "responseEnd": 1305.4000000059605
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/fish_icon.gif",
+      "initiatorType": "img",
+      "duration": 424.1000000014901,
+      "transferSize": 739,
+      "encodedBodySize": 439,
+      "decodedBodySize": 439,
+      "startTime": 882.1000000014901,
+      "fetchStart": 882.1000000014901,
+      "domainLookupStart": 882.1000000014901,
+      "domainLookupEnd": 882.1000000014901,
+      "connectStart": 882.1000000014901,
+      "connectEnd": 882.1000000014901,
+      "requestStart": 887.3000000044703,
+      "responseStart": 1305,
+      "responseEnd": 1306.2000000029802
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/cats_icon.gif",
+      "initiatorType": "img",
+      "duration": 424.30000000447035,
+      "transferSize": 708,
+      "encodedBodySize": 408,
+      "decodedBodySize": 408,
+      "startTime": 882.1000000014901,
+      "fetchStart": 882.1000000014901,
+      "domainLookupStart": 882.1000000014901,
+      "domainLookupEnd": 882.1000000014901,
+      "connectStart": 882.1000000014901,
+      "connectEnd": 882.1000000014901,
+      "requestStart": 888.1000000014901,
+      "responseStart": 1305.1000000014901,
+      "responseEnd": 1306.4000000059605
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/reptiles_icon.gif",
+      "initiatorType": "img",
+      "duration": 423.8999999985099,
+      "transferSize": 969,
+      "encodedBodySize": 669,
+      "decodedBodySize": 669,
+      "startTime": 882.2000000029802,
+      "fetchStart": 882.2000000029802,
+      "domainLookupStart": 882.2000000029802,
+      "domainLookupEnd": 882.2000000029802,
+      "connectStart": 882.2000000029802,
+      "connectEnd": 882.2000000029802,
+      "requestStart": 888.6000000014901,
+      "responseStart": 1304.9000000059605,
+      "responseEnd": 1306.1000000014901
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/birds_icon.gif",
+      "initiatorType": "img",
+      "duration": 608.2000000029802,
+      "transferSize": 771,
+      "encodedBodySize": 471,
+      "decodedBodySize": 471,
+      "startTime": 882.2000000029802,
+      "fetchStart": 882.2000000029802,
+      "domainLookupStart": 882.2000000029802,
+      "domainLookupEnd": 882.2000000029802,
+      "connectStart": 882.2000000029802,
+      "connectEnd": 882.2000000029802,
+      "requestStart": 889.2000000029802,
+      "responseStart": 1486.6000000014901,
+      "responseEnd": 1490.4000000059605
+    },
+    {
+      "name": "https://petstore.octoperf.com/images/splash.gif",
+      "initiatorType": "img",
+      "duration": 606.5,
+      "transferSize": 36397,
+      "encodedBodySize": 36097,
+      "decodedBodySize": 36097,
+      "startTime": 882.3000000044703,
+      "fetchStart": 882.3000000044703,
+      "domainLookupStart": 882.3000000044703,
+      "domainLookupEnd": 882.3000000044703,
+      "connectStart": 882.3000000044703,
+      "connectEnd": 882.3000000044703,
+      "requestStart": 889.4000000059605,
+      "responseStart": 1305.1000000014901,
+      "responseEnd": 1488.8000000044703
+    },
+    {
+      "name": "https://petstore.octoperf.com/favicon.ico",
+      "initiatorType": "other",
+      "duration": 194.60000000149012,
+      "transferSize": 1062,
+      "encodedBodySize": 762,
+      "decodedBodySize": 762,
+      "startTime": 1494.6000000014901,
+      "fetchStart": 1494.6000000014901,
+      "domainLookupStart": 1494.6000000014901,
+      "domainLookupEnd": 1494.6000000014901,
+      "connectStart": 1494.6000000014901,
+      "connectEnd": 1494.6000000014901,
+      "requestStart": 1496.6000000014901,
+      "responseStart": 1687,
+      "responseEnd": 1689.2000000029802
+    }
+  ],
+  "networkRequests": [
+    {
+      "requestId": "83CAF0710FF357BF549A8BB2A90D3438",
+      "url": "https://petstore.octoperf.com/actions/Catalog.action",
+      "method": "GET",
+      "resourceType": "Document",
+      "timestamp": 54287.024011,
+      "initiator": "other",
+      "status": 200,
+      "mimeType": "text/html",
+      "headers": {
+        "content-language": "en-US",
+        "content-length": "5352",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Sat, 15 Nov 2025 17:35:41 GMT",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "responseTime": 54287.897901,
+      "fromCache": false,
+      "encodedDataLength": 5568,
+      "finishTime": 54287.898425
+    },
+    {
+      "requestId": "22946.2",
+      "url": "https://petstore.octoperf.com/css/jpetstore.css",
+      "method": "GET",
+      "resourceType": "Stylesheet",
+      "timestamp": 54287.904522,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "text/css",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "5973",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"5973-1670877034000\"",
+        "content-type": "text/css",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.140906,
+      "fromCache": false,
+      "encodedDataLength": 6173,
+      "finishTime": 54288.142726
+    },
+    {
+      "requestId": "22946.3",
+      "url": "https://petstore.octoperf.com/images/logo-topbar.svg",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.904773,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/svg+xml",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "16288",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"16288-1670877034000\"",
+        "content-type": "image/svg+xml",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.142724,
+      "fromCache": false,
+      "encodedDataLength": 16522,
+      "finishTime": 54288.326696
+    },
+    {
+      "requestId": "22946.4",
+      "url": "https://petstore.octoperf.com/images/cart.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.904849,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "1660",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"1660-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.326237,
+      "fromCache": false,
+      "encodedDataLength": 1852,
+      "finishTime": 54288.326865
+    },
+    {
+      "requestId": "22946.5",
+      "url": "https://petstore.octoperf.com/images/separator.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.904913,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "46",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"46-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.326385,
+      "fromCache": false,
+      "encodedDataLength": 235,
+      "finishTime": 54288.326959
+    },
+    {
+      "requestId": "22946.7",
+      "url": "https://petstore.octoperf.com/images/sm_fish.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.904988,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "271",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"271-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.32646,
+      "fromCache": false,
+      "encodedDataLength": 461,
+      "finishTime": 54288.327027
+    },
+    {
+      "requestId": "22946.9",
+      "url": "https://petstore.octoperf.com/images/sm_dogs.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905062,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "306",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"306-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.329511,
+      "fromCache": false,
+      "encodedDataLength": 496,
+      "finishTime": 54288.329151
+    },
+    {
+      "requestId": "22946.11",
+      "url": "https://petstore.octoperf.com/images/sm_reptiles.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905121,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "398",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"398-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.326651,
+      "fromCache": false,
+      "encodedDataLength": 589,
+      "finishTime": 54288.327153
+    },
+    {
+      "requestId": "22946.13",
+      "url": "https://petstore.octoperf.com/images/sm_cats.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905198,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "289",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"289-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.326754,
+      "fromCache": false,
+      "encodedDataLength": 479,
+      "finishTime": 54288.327325
+    },
+    {
+      "requestId": "22946.15",
+      "url": "https://petstore.octoperf.com/images/sm_birds.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905261,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "251",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"251-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.329668,
+      "fromCache": false,
+      "encodedDataLength": 441,
+      "finishTime": 54288.329288
+    },
+    {
+      "requestId": "22946.16",
+      "url": "https://petstore.octoperf.com/images/fish_icon.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905307,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "439",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"439-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.329882,
+      "fromCache": false,
+      "encodedDataLength": 630,
+      "finishTime": 54288.32951
+    },
+    {
+      "requestId": "22946.17",
+      "url": "https://petstore.octoperf.com/images/dogs_icon.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905344,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "468",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"468-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.329404,
+      "fromCache": false,
+      "encodedDataLength": 659,
+      "finishTime": 54288.32875
+    },
+    {
+      "requestId": "22946.18",
+      "url": "https://petstore.octoperf.com/images/cats_icon.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905382,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "408",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"408-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.33,
+      "fromCache": false,
+      "encodedDataLength": 598,
+      "finishTime": 54288.329657
+    },
+    {
+      "requestId": "22946.19",
+      "url": "https://petstore.octoperf.com/images/reptiles_icon.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905441,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "669",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"669-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.329771,
+      "fromCache": false,
+      "encodedDataLength": 860,
+      "finishTime": 54288.329405
+    },
+    {
+      "requestId": "22946.20",
+      "url": "https://petstore.octoperf.com/images/birds_icon.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905491,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "471",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"471-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.51138,
+      "fromCache": false,
+      "encodedDataLength": 661,
+      "finishTime": 54288.513625
+    },
+    {
+      "requestId": "22946.21",
+      "url": "https://petstore.octoperf.com/images/splash.gif",
+      "method": "GET",
+      "resourceType": "Image",
+      "timestamp": 54287.905532,
+      "initiator": "parser",
+      "status": 200,
+      "mimeType": "image/gif",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "accept-ranges": "bytes",
+        "content-length": "36097",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "etag": "W/\"36097-1670877034000\"",
+        "content-type": "image/gif",
+        "last-modified": "Mon, 12 Dec 2022 20:30:34 GMT"
+      },
+      "responseTime": 54288.33012,
+      "fromCache": false,
+      "encodedDataLength": 36363,
+      "finishTime": 54288.512124
+    },
+    {
+      "requestId": "22946.42",
+      "url": "https://petstore.octoperf.com/favicon.ico",
+      "method": "GET",
+      "resourceType": "Other",
+      "timestamp": 54288.51776,
+      "initiator": "other",
+      "status": 404,
+      "mimeType": "text/html",
+      "headers": {
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "content-length": "762",
+        "date": "Sat, 15 Nov 2025 17:35:42 GMT",
+        "content-type": "text/html;charset=utf-8",
+        "content-language": "en"
+      },
+      "responseTime": 54288.711921,
+      "fromCache": false,
+      "encodedDataLength": 906,
+      "finishTime": 54288.712485
+    }
+  ]
+}
