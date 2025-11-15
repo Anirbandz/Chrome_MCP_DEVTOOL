@@ -171,6 +171,10 @@ export function stabilizeResponseOutput(text: unknown) {
   const chUaPlatformRegEx = /sec-ch-ua-platform:"[a-zA-Z]*"/g;
   output = output.replaceAll(chUaPlatformRegEx, 'sec-ch-ua-platform:"<os>"');
 
+  // accept-language can vary based on user's locale
+  const acceptLanguageRegEx = /accept-language:[a-zA-Z-,;=.0-9]*/g;
+  output = output.replaceAll(acceptLanguageRegEx, 'accept-language:<locale>');
+
   const savedSnapshot = /Saved snapshot to (.*)/g;
   output = output.replaceAll(savedSnapshot, 'Saved snapshot to <file>');
   return output;
