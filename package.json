@@ -8,6 +8,7 @@
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('build', {recursive: true, force: true})\"",
     "generate-report": "node scripts/generate_perf_report.mjs",
+    "perf-test": "node scripts/perf-test.mjs",
     "bundle": "npm run clean && npm run build && rollup -c rollup.config.mjs",
     "build": "tsc && node --experimental-strip-types --no-warnings=ExperimentalWarning scripts/post-build.ts",
     "typecheck": "tsc --noEmit",
