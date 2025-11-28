@@ -4,8 +4,7 @@
     "target": "esnext",
     "module": "nodenext",
     "moduleResolution": "nodenext",
-    "outDir": "../build/src",
-    "rootDir": ".",
+    "outDir": "../build/scripts",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -15,7 +14,9 @@
     "noFallthroughCasesInSwitch": true,
     "incremental": true,
     "allowJs": true,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
-  "include": ["./**/*.ts", "./**/*.js"]
+  "include": ["./**/*.ts", "./**/*.mjs"]
 }
