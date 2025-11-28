@@ -1,0 +1,202 @@
+{
+  "url": "https://petstore.octoperf.com/actions/Catalog.action",
+  "timestamp": "2025-11-28T15:09:14.508Z",
+  "tests": [
+    {
+      "name": "Navigation",
+      "status": "success",
+      "loadTime": "2324ms"
+    },
+    {
+      "name": "Page Information",
+      "status": "success",
+      "data": {
+        "title": "JPetStore Demo",
+        "url": "https://petstore.octoperf.com/actions/Catalog.action",
+        "viewport": {
+          "width": 800,
+          "height": 600
+        }
+      }
+    },
+    {
+      "name": "DOM Snapshot",
+      "status": "success",
+      "data": {
+        "headings": [],
+        "links": [
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Cart.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCart="
+          },
+          {
+            "text": "Sign In",
+            "href": "https://petstore.octoperf.com/actions/Account.action;jsessionid=5918CA22B1C4641418683469C5768063?signonForm="
+          },
+          {
+            "text": "?",
+            "href": "https://petstore.octoperf.com/help.html"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=FISH"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=DOGS"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=REPTILES"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=CATS"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=BIRDS"
+          },
+          {
+            "text": "",
+            "href": "https://petstore.octoperf.com/actions/Catalog.action;jsessionid=5918CA22B1C4641418683469C5768063?viewCategory=&categoryId=FISH"
+          }
+        ],
+        "images": [
+          {
+            "src": "https://petstore.octoperf.com/images/logo-topbar.svg",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/cart.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/sm_fish.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/sm_dogs.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/sm_reptiles.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/sm_cats.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/separator.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/sm_birds.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/fish_icon.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/dogs_icon.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/cats_icon.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/reptiles_icon.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/birds_icon.gif",
+            "alt": ""
+          },
+          {
+            "src": "https://petstore.octoperf.com/images/splash.gif",
+            "alt": ""
+          }
+        ],
+        "forms": 1,
+        "buttons": 1
+      }
+    },
+    {
+      "name": "Performance Metrics",
+      "status": "success",
+      "data": {
+        "domContentLoaded": 1041,
+        "loadComplete": 1741,
+        "domInteractive": 1041,
+        "dnsLookup": 40,
+        "tcpConnection": 391,
+        "serverResponse": 463
+      }
+    },
+    {
+      "name": "Network Analysis",
+      "status": "success",
+      "data": {
+        "totalRequests": 17,
+        "byType": {
+          "Document": 1,
+          "Stylesheet": 1,
+          "Image": 14,
+          "Other": 1
+        },
+        "failed": 0
+      }
+    },
+    {
+      "name": "Console Logs",
+      "status": "success",
+      "data": {
+        "total": 0,
+        "byLevel": {}
+      }
+    },
+    {
+      "name": "Screenshot",
+      "status": "success",
+      "filePath": "/Users/anirbanganguly/Documents/Coding/Google Dev Tool MCP/chrome-devtools-mcp-main/performance-reports/mcp-test-screenshot-1764342557848.png"
+    },
+    {
+      "name": "Accessibility Check",
+      "status": "success",
+      "data": {
+        "imagesWithoutAlt": 19,
+        "linksWithoutText": 12,
+        "headingStructure": [],
+        "hasMainLandmark": false,
+        "hasNavLandmark": false
+      }
+    }
+  ]
+}
